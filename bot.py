@@ -34,7 +34,6 @@ def event_form(summary, description, start, end):
 def show_statistics_chart(array, nickname, start_date, end_date):
     plt.hist(array, bins='auto')
 
-    # Настройка осей и названия гистограммы
     plt.xticks(rotation=90)
     plt.xlabel('Дата')
     plt.ylabel('Количество встреч')
@@ -46,7 +45,6 @@ def show_statistics_chart(array, nickname, start_date, end_date):
     plt.savefig(buffer, format='png')
     buffer.seek(0)
 
-    # Очистка графика
     plt.clf()
 
     return buffer
@@ -56,7 +54,6 @@ def show_statistics_chart(array, nickname, start_date, end_date):
 # obj.add_event(calendar_id=calendar, body=event) - можете создать собстенное собрание по формату def event и убедится, что все работает корректно
 
 import telebot
-from telebot import types
 
 bot = telebot.TeleBot('6511790700:AAFAL_X9E1W4RJ9AhiseMMopM-Ec-betSOM')
 
@@ -236,7 +233,7 @@ def adding_meeting(message):
 # --------------------------------------------------------------------------------------------------------------------
 # Личная статистика по всем встречам за определенный срок
 @bot.message_handler(commands=['my_statistics'])
-def registration(message):
+def registr(message):
     bot.send_message(message.chat.id, "Введите дату начала промежутка, за который вы хотели бы узнать статистику по встречам, в которых вы принимали участие, в формате год-месяц-день:")
     bot.register_next_step_handler(message, stat_end_date)
 
